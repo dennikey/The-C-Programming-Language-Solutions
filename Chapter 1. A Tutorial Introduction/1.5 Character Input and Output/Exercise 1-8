@@ -9,7 +9,7 @@ int main(void)
 
     printf("Press CTRL and Z for Windows when finished\n");
     while ((c = getchar()) != EOF){
-        if (c == '\0')
+        if (c == ' ')
             ++nb;
         else if (c == '\t')
             ++nt;
