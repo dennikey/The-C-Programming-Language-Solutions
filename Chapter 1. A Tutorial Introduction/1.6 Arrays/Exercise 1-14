@@ -1,0 +1,20 @@
+#include <stdio.h>
+#define numberchar 128
+
+int main(void)
+{
+    int c, i;
+    int numberfreq[numberchar + 1];
+
+    for (i = 0; i <= numberchar; i++)
+        numberfreq[i] = 0;
+
+    while ((c = getchar()) != EOF)
+        ++numberfreq[c];
+
+    for (i = 0; i <= numberchar; ++i)
+        if (numberfreq[i] > 0)
+            printf(" %3d : %3d\n", i, numberfreq[i]);
+
+    return 0;
+}
