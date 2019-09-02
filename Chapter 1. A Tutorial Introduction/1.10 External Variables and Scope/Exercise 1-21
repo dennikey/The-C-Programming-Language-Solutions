@@ -1,0 +1,55 @@
+#include <stdio.h>
+#define MAXLINE 1000
+#define TABLENGTH 8
+
+int getline(char s[]);
+void entab(char line1[], char line2[], int tablength);
+
+int main (void)
+{
+    char line1[MAXLINE];
+    char line2[MAXLINE];
+
+    while(getline(line1) == 0)
+        ;
+
+    entab(line1, line2, TABLENGTH);
+    printf("%s\n", line2);
+
+    return 0;
+}
+
+int getline(char line1[])
+{
+    int c, i;
+
+    for (i = 0; i < MAXLINE - 1 && (c = getchar()) != EOF && c != '\n'; i++)
+        line1[i] = c;
+    if (c = '\n'){
+        line1[i] = c;
+        i++;
+    }
+    line1[i] = '\0';
+
+    return i;
+}
+
+void entab(char line1[], char line2[], int tablength)
+{
+    int c, i, j, l, blanks;
+
+    i = 0;
+    l = 0;
+    while((c = line1[i++]) != '\0'){
+        if (c == '\t'){
+            blanks = tablength - l % tablength;
+            for (j = 0; j < blanks; ++j)
+                line2[l++] = ' ';
+        } else if (c == ' '){
+            line2[l++] = ' ';
+        } else {
+            line2[l++] = c;
+        }
+    }
+    line2[l] = '\0';
+}
